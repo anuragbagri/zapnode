@@ -1,5 +1,6 @@
 import { TRPCReactProvider } from "@/trpc/client";
 import "./globals.css";
+import { Toaster } from "sonner";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -11,6 +12,7 @@ export default function RootLayout({
       <body>
         <TRPCReactProvider>
         {children}
+        <Toaster/>
         </TRPCReactProvider>
       </body>
     </html>
