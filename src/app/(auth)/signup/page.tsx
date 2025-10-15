@@ -1,11 +1,7 @@
 import { RegisterForm } from "@/features/auth/components/register-form";
 import { requireUnauth } from "@/lib/auth-utils";
 
-export default async function Signup(){
-    await requireUnauth();
-    return (
-        <div>
-            <RegisterForm/>
-        </div>
-    )
+export default async function Signup() {
+  await requireUnauth();
+  return <RegisterForm />;
 }
