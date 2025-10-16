@@ -1,17 +1,24 @@
 import { inngest } from "@/inngest/client";
+import prisma from "@/lib/db";
 
-export const helloWorld = inngest.createFunction(
-  { id: "hello-world" },
-  { event: "test/hello.world" },
+export const testworkflow = inngest.createFunction(
+  { id: "zapnode" },
+  { event: "test/workflow" },
   async ({ event, step }) => {
-    // this is job (these are all micro jobs)
-    await step.sleep("wait-a-moment", "10s");
+    await step.sleep("transcribe", "5s");
 
-    // upload a video 
-       await step.sleep("wait-a-moment", "1s");
+    await step.sleep("editing", "5s");
 
-       // transcribe the vedio 
-          await step.sleep("wait-a-moment", "1s");
+    await step.sleep("upload to ai", "5s");
+
+    await step.run('create-worflow', () => {
+          return prisma.workflow.create({
+            data : {
+              name : "test-workflow"
+            },
+          });
+    })
+    
     return { message: `Hello ${event.data.email}!` };
   },
 );

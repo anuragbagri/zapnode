@@ -10,7 +10,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           className="flex items-center gap-2 self-center font-medium"
         >
           <Image src="/logo.svg" alt="logo" width={30} height={30} />
-          Nodebase
+          ZapNode
         </Link>
         {children}
       </div>
